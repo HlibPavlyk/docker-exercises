@@ -2,11 +2,13 @@ FROM python:3.10-bullseye
 
 WORKDIR /app
 
-COPY . .
+COPY requirements/freeze_requirements.txt .
 
 RUN python -m venv ./.venv && \
     . ./.venv/bin/activate && \
-    pip install -r requirements/freeze_requirements.txt
+    pip install -r freeze_requirements.txt
+
+COPY . .
 
 EXPOSE 5000
 
