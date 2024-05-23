@@ -6,7 +6,7 @@ COPY . .
 
 RUN python -m venv ./.venv && \
     . ./.venv/bin/activate && \
-    pip install -r requirements/backend.in
+    pip install -r requirements/freeze_requirements.txt
 
 EXPOSE 5000
 
