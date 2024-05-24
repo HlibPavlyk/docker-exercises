@@ -1,0 +1,5 @@
+.gitignore
+.dockerignore
+README.rst
+Dockerfile
+build
