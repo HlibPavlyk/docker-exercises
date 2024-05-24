@@ -1,4 +1,4 @@
-FROM golang:1.22.3-alpine
+FROM golang:1.22.3-alpine AS build
 
 WORKDIR /app
 
@@ -11,7 +11,14 @@ COPY . .
 
 RUN go build -o build/fizzbuzz
 
+FROM scratch
+
+WORKDIR /app
+
+COPY --from=build /app/build/fizzbuzz .
+COPY --from=build /app/templates/index.html templates/
+
 EXPOSE 8080
 
-CMD ["build/fizzbuzz", "serve"]
+CMD ["./fizzbuzz", "serve"]
 
